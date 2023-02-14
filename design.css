@@ -1,0 +1,11 @@
+.calculator-grid{
+	display:grid;
+	justify-content:center;
+	align-items:center;
+	grid-template-columns:repeat(3,100px);
+	grid-template-rows:repeat(2,100px);
+}
+.calculator-grid>button{
+	border:1px solid white;
+	outline:none;
+}
