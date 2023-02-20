@@ -2,9 +2,21 @@
 <html>
 	<head>
 		<title>Game</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<canvas id="gameCanvas"></canvas>
+		<canvas id="gameCanvas" style="background-color:lightblue;"></canvas>
+		<div class="grid-container">
+			<button id="none" style="width:60px;height:60px;" disabled>+</button>
+			<button id="UpButton" style="width:60px;height:60px;">🔼</button>
+			<button id="none" style="width:60px;height:60px;" disabled>+</button>
+			<button id="LeftButton" style="width:60px;height:60px;">◀️</button>
+			<button id="none" style="width:60px;height:60px;" disabled>+</button>
+			<button id="RightButton" style="width:60px;height:60px;">▶️</button>
+			<button id="none" style="width:60px;height:60px;" disabled>+</button>
+			<button id="DownButton" style="width:60px;height:60px;">🔽</button>
+			<button id="none" style="width:60px;height:60px;" disabled>+</button>
+		</div>
 		<script src="game.js"></script>
 	</body>
 </html>
