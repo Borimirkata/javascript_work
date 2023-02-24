@@ -5,8 +5,6 @@ let context=canvas.getContext("2d");
 let nx=8;
 let ny=8;
 let sqside=50;
-let herox=0;
-let heroy=0;
 let gol = document.getElementById("gol");
 let result=0;
 let coinx=Math.floor(Math.random()*7)+1;
@@ -19,11 +17,10 @@ let bomb3x=Math.floor(Math.random()*7)+1;
 let bomb3y=Math.floor(Math.random()*7)+1;
 let heroimg=new Image();
 let masiv=["kirka","lopata","bomba"];
-let obekt = {
-	name:"MinorBob",
-	age: 48
+let hero = {
+	x:0,
+	y:0
 }
-console.log(obekt);
 console.log(masiv);
 heroimg.src="hero.png"
 canvas.width=nx*sqside;
@@ -31,7 +28,7 @@ canvas.height=ny*sqside;
 document.getElementById("gol").value=result;
 function drawMap() {
 	context.clearRect(0,0,canvas.width,canvas.height);
-	context.drawImage(heroimg,herox*sqside,heroy*sqside,sqside,sqside);
+	context.drawImage(heroimg,hero.x*sqside,hero.y*sqside,sqside,sqside);
 	for(let i=0;i<nx;i++) {
 		for(let j=0;j<ny;j++) {
 			context.strokeRect(i*sqside,j*sqside,sqside,sqside);
@@ -43,7 +40,7 @@ function drawMap() {
 				context.fillStyle="yellow";
 				context.fillRect(i*sqside,j*sqside,sqside,sqside);
 			}
-			if(herox==coinx && heroy==coiny){
+			if(hero.x==coinx && hero.y==coiny){
 				result++;
 				document.getElementById("gol").value=result;
 				coinx=Math.floor(Math.random()*7)+1;
@@ -61,7 +58,7 @@ function drawMap() {
 				context.fillStyle="brown";
 				context.fillRect(i*sqside,j*sqside,sqside,sqside);
 			}
-			if((herox==bomb1x && heroy==bomb1y) || (herox==bomb2x && heroy==bomb2y) || (herox==bomb3x && heroy==bomb3y)){
+			if((hero.x==bomb1x && hero.y==bomb1y) || (hero.x==bomb2x && hero.y==bomb2y) || (hero.x==bomb3x && hero.y==bomb3y)){
 				window.location.reload();
 				hose.value="";
 				
@@ -73,40 +70,40 @@ function drawMap() {
 			
 		}
 	}
-	context.drawImage(heroimg,herox*sqside,heroy*sqside,sqside,sqside);
+	context.drawImage(heroimg,hero.x*sqside,hero.y*sqside,sqside,sqside);
 }
 
 
 drawMap();
 UpButton.onclick=function(e){
-	herox=herox;
-	heroy=heroy-1;
-	if(heroy<0){
-		heroy=0;
+	hero.x=hero.x;
+	hero.y=hero.y-1;
+	if(hero.y<0){
+		hero.y=0;
 	}
 	drawMap();
 }
 DownButton.onclick=function(e){
-	herox=herox;
-	heroy=heroy+1;
-	if(heroy>=ny){
-		heroy=ny-1;
+	hero.x=hero.x;
+	hero.y=hero.y+1;
+	if(hero.y>=ny){
+		hero.y=ny-1;
 	}
 	drawMap();
 }
 LeftButton.onclick=function(e){
-	herox=herox-1;
-	heroy=heroy;
-	if(herox<0){
-		herox=0;
+	hero.x=hero.x-1;
+	hero.y=hero.y;
+	if(hero.x<0){
+		hero.x=0;
 	}
 	drawMap();
 }
 RightButton.onclick=function(e){
-	herox=herox+1;
-	heroy=heroy;
-	if(herox>=nx){
-		herox=nx-1;
+	hero.x=hero.x+1;
+	hero.y=hero.y;
+	if(hero.x>=nx){
+		hero.x=nx-1;
 	}
 	drawMap();
 }
@@ -124,24 +121,22 @@ document.onkeypress=function(e){
 
 function color(){
 	let letter=hose.value.charAt(0);
-	if(letter=='A' || 'a'){
+	if(letter=='a'){
 		hose.style.backgroundColor = 'aqua';
 	}
-	else if(letter=='B' || 'b'){
+	else if(letter=='b'){
+		hose.style.backgroundColor = 'blue';
+	}
+	else if(letter=='c'){
 		hose.style.backgroundColor = 'yellow';
 	}
-	else if(letter=='C' || 'c'){
-		hose.style.backgroundColor = 'coral';
-	}
-	else if(letter=='D' || 'd'){
-		hose.style.backgroundColor = 'darkgray';
-	}
 	else{
-		hose.style.backgroundColor = 'white';
+		hose.style.backgroundColor = 'green';
 	}
 }
 change.onclick=function(e){
 	color();
 }
+
 
 
