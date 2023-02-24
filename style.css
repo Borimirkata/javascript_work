@@ -14,3 +14,51 @@
 	height:50px;
 	text-align:center;
 }
+#what{
+	width:80px;
+	height:50px;
+	text-align:center;
+	margin-left:250px;
+	margin-top:-500px;
+}
+#yes{
+	width:100px;
+}
+#pog{
+	width:150px;
+	margin-left:180px;
+	margin-top:-430px;
+}
+#hose{
+	width:100px;
+	margin-left:390px;
+	margin-top:-430px;
+	height:20px;
+}
+#none{
+	width:60px;
+	height:60px;
+
+}
+#UpButton{
+	width:60px;
+	height:60px;
+}
+#DownButton{
+	width:60px;
+	height:60px;
+}
+#LeftButton{
+	width:60px;
+	height:60px;
+}
+#RightButton{
+	width:60px;
+	height:60px;
+}
+#change{
+	height:30px;
+	width:100px;
+	margin-left:330px;
+	margin-top:-400px;
+}

@@ -1,4 +1,6 @@
 let canvas=document.getElementById("gameCanvas");
+let hose=document.getElementById("hose");
+let hoseValue = hose.value;
 let context=canvas.getContext("2d");
 let nx=8;
 let ny=8;
@@ -16,6 +18,13 @@ let bomb2y=Math.floor(Math.random()*7)+1;
 let bomb3x=Math.floor(Math.random()*7)+1;
 let bomb3y=Math.floor(Math.random()*7)+1;
 let heroimg=new Image();
+let masiv=["kirka","lopata","bomba"];
+let obekt = {
+	name:"MinorBob",
+	age: 48
+}
+console.log(obekt);
+console.log(masiv);
 heroimg.src="hero.png"
 canvas.width=nx*sqside;
 canvas.height=ny*sqside;
@@ -54,14 +63,14 @@ function drawMap() {
 			}
 			if((herox==bomb1x && heroy==bomb1y) || (herox==bomb2x && heroy==bomb2y) || (herox==bomb3x && heroy==bomb3y)){
 				window.location.reload();
+				hose.value="";
+				
+			}
+			if((coinx==bomb1x && coinx==bomb1y) || (coinx==bomb2x && coinx==bomb2y) || (coinx==bomb3x && coinx==bomb3y)){
+					coinx=Math.floor(Math.random()*7)+1;
+					coiny=Math.floor(Math.random()*7)+1;
 			}
 			
-			//if(coinx==herox && coiny==heroy){
-				//coinx=Math.floor(Math.random()*7)+1;
-				//coiny=Math.floor(Math.random()*7)+1;
-				//context.fillStyle="yellow";
-				//context.fillRect(i*sqside,j*sqside,sqside,sqside);
-			//{
 		}
 	}
 	context.drawImage(heroimg,herox*sqside,heroy*sqside,sqside,sqside);
@@ -69,14 +78,6 @@ function drawMap() {
 
 
 drawMap();
-//canvas.onclick=function(e){
-	//let x=e.x-canvas.offsetLeft;
-	//let y=e.y-canvas.offsetTop;
-	//herox=Math.floor(x/sqside);
-	//heroy=Math.floor(y/sqside);
-	//console.log(herox+" "+heroy);
-	//drawMap();
-//}
 UpButton.onclick=function(e){
 	herox=herox;
 	heroy=heroy-1;
@@ -109,3 +110,38 @@ RightButton.onclick=function(e){
 	}
 	drawMap();
 }
+what.onclick=function(e){
+	alert("The bombs are not visible.Collect as many coins as posible.If you want to close the window,press the + key.");
+}
+document.onkeypress=function(e){
+	let key=e.key;
+	switch(key){
+		case"+":
+			window.close();
+			break;
+	}
+}
+
+function color(){
+	let letter=hose.value.charAt(0);
+	if(letter=='A' || 'a'){
+		hose.style.backgroundColor = 'aqua';
+	}
+	else if(letter=='B' || 'b'){
+		hose.style.backgroundColor = 'yellow';
+	}
+	else if(letter=='C' || 'c'){
+		hose.style.backgroundColor = 'coral';
+	}
+	else if(letter=='D' || 'd'){
+		hose.style.backgroundColor = 'darkgray';
+	}
+	else{
+		hose.style.backgroundColor = 'white';
+	}
+}
+change.onclick=function(e){
+	color();
+}
+
+
